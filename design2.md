@@ -3,12 +3,43 @@
 ## Pseudo Code
 
 Log Food Intake: 
-Calculate Calories Burned: 
+
+
+
+Calculate Calories Burned:
+
+
+
 Meal Planner: 
+
+
+
 Create Exercise Session:
+
+
+
 Set Exercise Duration: 
+
+
+
 Set Exercise type:
+
+
+
 Exercise Details:
+
+
+
+Set Goal / Reward:
+
+
+
+Set Daily Step Goal:
+
+
+
+Set Calorie Intake Goal:
+
 
 
 ## Recursion Use Case
@@ -16,3 +47,4 @@ Exercise Details:
 
 
 ## Project Data
+
