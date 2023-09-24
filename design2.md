@@ -5,6 +5,10 @@
 Log Food Intake: 
 Calculate Calories Burned: 
 Meal Planner: 
+Create Exercise Session:
+Set Exercise Duration: 
+Set Exercise type:
+Exercise Details:
 
 
 ## Recursion Use Case
