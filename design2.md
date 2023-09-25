@@ -77,4 +77,17 @@ SetExerciseDuration(exercise4, 20 minutes)
 
 ## Project Data
 
-We plan to have a built-in database to help users track their daily calories. Many different functions will update the daily calorie count. This way, if a user would like to, we can keep a history of daily calorie changes to figure out what works and what does not.
+We plan to have a built-in database to help users track their daily calories. Many different functions will update the daily calorie count. This way, if a user would like to, we can keep a history of daily calorie changes to figure out what works and what does not. If we look closer to the pseudcode of the above functions we plan to implement, then we can think a bit deeper on what data we would have to store. 
+
+Based on the above functions, the things our project would have to store include:
+  - user's food diary : includes both meals and calories, can be added to by the user
+  - a dictionary for the number of calories an exercise type typically burns in a minute, the user uses this to calculate how many calories they have burned given the duration and exercise type
+  - a list of meal options and what nutritionalGoals and dietaryPreferences they are associated with, this could be a list of lists storing the meal option and its attributes, this would give us the flexibilty to attach a different number of attributes to each meal option when necessary
+  - the user's exercise sessions: the user can edit details and start exercise sessions so we need to be able to track their sessions and their details including duration, details, and type
+  - bank of user-defined goals and rewards: we need to be able to track the user's goals and what their reward will be upon completion, this can also be stored as a dictionary or a list of lists
+  - the user's step tracker: we need to track the user's steps and also include their inputted goal in order to calculate when or if they meet it given their inputted activity
+  - the user's calorie goal: we need to remember the user's calorie intake goal in order to address whether they have met it or not
+
+This is the list of data we need to storer given the functions we have created thus far. However, this list can and most likely will be updated to reflect the progress made and additions to the project. Most of the above data can be stored in a single variable or in a list of lists or dictionaries. This is due to the fact that we want users to be able to create objects (such as an exercise session) and add attributes and details to them. 
+
+The blockbased programming language will interact with this data and compliments it quite well. As a user creates an exercise session, for example, we can connect that to the declaration of a variable or of a list item. Then, as they add more details or attributes, we can call upon that already declared item and pass through the user-inputted information. Therefore, it will allow a smooth transition from the user input in the block-based language into the back-end code that manages such data. 
