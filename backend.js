@@ -65,6 +65,17 @@ Blockly.Blocks['math_number'] = {
   }
 };
 
+Blockly.Blocks['var'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("var")
+        .appendField(new Blockly.FieldTextInput("x"), "NAME");
+    this.setOutput(true, "var");
+    this.setColour(430);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
 
 
 Blockly.JavaScript.forBlock['Exercise'] = function(block) {
@@ -86,6 +97,12 @@ Blockly.JavaScript.forBlock['Text'] = function(block) {
   var expr2_code = Blockly.JavaScript.valueToCode(block, 'EXPR2', Blockly.JavaScript.ORDER_NONE);
   var code = '(' + expr1_code + ')(' + expr2_code + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript.forBlock['var'] = function(block) {
+  var var_name = block.getFieldValue('NAME');
+  var code = var_name;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 var runButton = document.getElementById('runButton');
