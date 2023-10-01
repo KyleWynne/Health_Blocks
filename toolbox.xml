@@ -1,0 +1,26 @@
+<xml id="toolbox" style="display: none">
+    <!-- Define categories for custom blocks -->
+  <category name="Custom Blocks" colour="130">
+    <!-- Exercise block -->
+    <block type="exercise"></block>
+
+    <!-- Diet block -->
+    <block type="diet"></block>
+
+    <!-- Text block -->
+    <block type="text"></block>
+  </category>
+
+  <!-- Define category for math_number block -->
+  <category name="Math" colour="230">
+    <!-- Math Number block -->
+    <block type="math_number"></block>
+  </category>
+
+  <!-- Define category for var block -->
+  <category name="Variables" colour="430">
+    <!-- Var block -->
+    <block type="var"></block>
+  </category>
+</xml>
+
