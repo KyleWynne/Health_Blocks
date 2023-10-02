@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Health Blocks</title>
+    <title>Healthy Blocks</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="backend.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -28,28 +28,28 @@
         <div id="codeDiv" class="half-width"></div>
         <div id="outputDiv" class="half-width"></div>
     </div>
-<script>
-    var workspace = Blockly.inject('blocklyDiv', {
-        toolbox: document.getElementById('toolbox'),
-        scrollbars: true
-    });
+    <script>
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox'),
+            scrollbars: true
+        });
 
-    function generateCode() {
-        var code = Blockly.JavaScript.workspaceToCode(workspace);
-        document.getElementById('codeDiv').innerText = code;
-    }
-
-    function runCode() {
-        var code = Blockly.JavaScript.workspaceToCode(workspace);
-        try {
-            var output = eval(code);
-            document.getElementById('outputDiv').innerText = output;
-        } catch (e) {
-            document.getElementById('outputDiv').innerText = 'Error: ' + e;
+        function generateCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            document.getElementById('codeDiv').innerText = code;
         }
-    }
 
-    function saveBlocks() {
+        function runCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            try {
+                var output = eval(code);
+                document.getElementById('outputDiv').innerText = output;
+            } catch (e) {
+                document.getElementById('outputDiv').innerText = 'Error: ' + e;
+            }
+        }
+
+        function saveBlocks() {
             var xml = Blockly.Xml.workspaceToDom(workspace);
             var xmlText = Blockly.Xml.domToPrettyText(xml);
             var blob = new Blob([xmlText], {type: 'text/xml'});
@@ -59,19 +59,20 @@
             a.click();
         }
 
-    function loadBlocks() {
-        document.getElementById('loadInput').click();
-    }
+        function loadBlocks() {
+            document.getElementById('loadInput').click();
+        }
 
-    function loadBlocksFile(event) {
-        var file = event.target.files[0];
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var xml = Blockly.utils.xml.textToDom(e.target.result);
-            Blockly.Xml.appendDomToWorkspace(xml, workspace);
-        };
-        reader.readAsText(file);
-    }
+        function loadBlocksFile(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var xml = Blockly.utils.xml.textToDom(e.target.result);
+                Blockly.Xml.appendDomToWorkspace(xml, workspace);
+            };
+            reader.readAsText(file);
+        }
 
-</script>
+    </script>
+</body>
 </html>
