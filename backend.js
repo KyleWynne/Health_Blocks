@@ -1,19 +1,13 @@
-
-var workspace = Blockly.inject('blocklyDiv', {
-    toolbox: document.getElementById('toolbox') // Optional toolbox
-});
-
-
 Blockly.Blocks['exercise'] = {
   init: function() {
-    this.appendValueInput("VAR")
-        .setCheck("var")
+    this.appendValueInput("EXPR1")
+        .setCheck(["var", "exp", "Number"])
         .appendField("exercise");
-    this.appendValueInput("EXPR")
+    this.appendValueInput("EXPR2")
         .setCheck(["var", "exp", "Number"]);
     this.setInputsInline(true);
     this.setOutput(true, "exp");
-    this.setColour(130);
+    this.setColour(330);
     this.setTooltip("");
     this.setHelpUrl("");
   }
@@ -33,8 +27,6 @@ Blockly.Blocks['diet'] = {
     this.setHelpUrl("");
   }
 };
-
-
 Blockly.Blocks['text'] = {
   init: function() {
     this.appendValueInput("EXPR1")
@@ -49,7 +41,6 @@ Blockly.Blocks['text'] = {
     this.setHelpUrl("");
   }
 };
-
 Blockly.Blocks['math_number'] = {
   /**
    * Block for numeric value.
@@ -64,7 +55,6 @@ Blockly.Blocks['math_number'] = {
     this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
   }
 };
-
 Blockly.Blocks['var'] = {
   init: function() {
     this.appendDummyInput()
@@ -76,7 +66,6 @@ Blockly.Blocks['var'] = {
     this.setHelpUrl("");
   }
 };
-
 
 Blockly.JavaScript.forBlock['Exercise'] = function(block) {
   var var_name = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_NONE);
