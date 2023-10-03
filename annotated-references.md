@@ -3,7 +3,7 @@
 ## Dieting Info
 
 https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/weight-loss/art-20047752 
-
+[Mayo Clinic Weight Loss][https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/weight-loss/art-20047752]:
 Information from the Mayo Clinic on dieting and weight loss. This is specifically information and tips for improving mindset when attempting weight loss.
 
 https://www.healthline.com/nutrition/18-foods-to-gain-weight#TOC_TITLE_HDR_5 
