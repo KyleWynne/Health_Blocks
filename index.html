@@ -3,18 +3,22 @@
 <head>
     <title>Healthy Blocks</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-    <script src="backend.js"></script>
+    <script src="https://unpkg.com/node-fetch"></script>
+    <script src="https://unpkg.com/whammy/whammy.min.js"></script>
+    <script src="code_blocks.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <div class="row">
         <div id="blocklyDiv" class="full-width"></div>
         <xml id="toolbox" style="display: none">
-            <block type="exercise"></block>
-            <block type="diet"></block>
-            <block type="text"></block>
-            <block type="math_number"></block>
-            <block type="var"></block>
+            <block type="create_video"></block>
+            <block type="set_frame_duration"></block>
+            <block type="add_frame"></block>
+            <block type="exercise_dropdown"></block>
+            <block type="setup_nutritionix"></block>
+            <block type="search_foods"></block>
+            <block type="text_input"></block>
         </xml>
     </div>
     <div class="row button-row">

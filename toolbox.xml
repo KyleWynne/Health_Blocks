@@ -1,5 +1,5 @@
 <xml id="toolbox" style="display: none">
-    <!-- Define categories for custom blocks -->
+  <!-- Define categories for custom blocks -->
   <category name="Custom Blocks" colour="130">
     <!-- Exercise block -->
     <block type="exercise"></block>
@@ -24,3 +24,25 @@
   </category>
 </xml>
 
+<!-- <xml>
+  <category name="API" colour="160">
+    <!-- Text block -->
+    <block type="text"></block>
+  </category>
+
+  <category name="Math" colour="230">
+    <!-- Math Number block -->
+    <block type="math_number"></block>
+  </category>
+
+  <category name="Variables" colour="430">
+    <!-- Var block -->
+    <block type="var"></block>
+  </category>
+
+  <category name="Nutritionix API">
+    <block type="setup_nutritionix"></block>
+    <block type="search_foods"></block>
+    <block type="get_query"></block>
+  </category>
+</xml> -->
