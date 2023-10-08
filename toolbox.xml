@@ -1,48 +1,13 @@
 <xml id="toolbox" style="display: none">
-  <!-- Define categories for custom blocks -->
-  <category name="Custom Blocks" colour="130">
-    <!-- Exercise block -->
-    <block type="exercise"></block>
-
-    <!-- Diet block -->
-    <block type="diet"></block>
-
-    <!-- Text block -->
-    <block type="text"></block>
+  <category name="Nutritionix" colour="210">
+    <block type="setup_nutritionix"></block>
+    <block type="text_input">
+      <field name="TEXT">chicken</field>
+    </block>
+    <block type="search_foods"></block>
   </category>
-
-  <!-- Define category for math_number block -->
-  <category name="Math" colour="230">
-    <!-- Math Number block -->
-    <block type="math_number"></block>
-  </category>
-
-  <!-- Define category for var block -->
-  <category name="Variables" colour="430">
-    <!-- Var block -->
-    <block type="var"></block>
+  <sep></sep>
+  <category name="Export" colour="160">
+    <button text="Export Code" callbackKey="exportCode"></button>
   </category>
 </xml>
-
-<!-- <xml>
-  <category name="API" colour="160">
-    <!-- Text block -->
-    <block type="text"></block>
-  </category>
-
-  <category name="Math" colour="230">
-    <!-- Math Number block -->
-    <block type="math_number"></block>
-  </category>
-
-  <category name="Variables" colour="430">
-    <!-- Var block -->
-    <block type="var"></block>
-  </category>
-
-  <category name="Nutritionix API">
-    <block type="setup_nutritionix"></block>
-    <block type="search_foods"></block>
-    <block type="get_query"></block>
-  </category>
-</xml> -->

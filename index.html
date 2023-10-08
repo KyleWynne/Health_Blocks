@@ -12,10 +12,6 @@
     <div class="row">
         <div id="blocklyDiv" class="full-width"></div>
         <xml id="toolbox" style="display: none">
-            <block type="create_video"></block>
-            <block type="set_frame_duration"></block>
-            <block type="add_frame"></block>
-            <block type="exercise_dropdown"></block>
             <block type="setup_nutritionix"></block>
             <block type="search_foods"></block>
             <block type="text_input"></block>
@@ -23,7 +19,7 @@
     </div>
     <div class="row button-row">
         <button onclick="generateCode()">Generate JavaScript</button>
-        <button onclick="runCode()">Run JavaScript</button>
+        <button onclick="exportCode()">Export JavaScript</button>
         <button onclick="saveBlocks()">Save Blocks</button>
         <button onclick="loadBlocks()">Load Blocks</button>
         <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
@@ -41,16 +37,6 @@
         function generateCode() {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
             document.getElementById('codeDiv').innerText = code;
-        }
-
-        function runCode() {
-            var code = Blockly.JavaScript.workspaceToCode(workspace);
-            try {
-                var output = eval(code);
-                document.getElementById('outputDiv').innerText = output;
-            } catch (e) {
-                document.getElementById('outputDiv').innerText = 'Error: ' + e;
-            }
         }
 
         function saveBlocks() {
@@ -75,6 +61,15 @@
                 Blockly.Xml.appendDomToWorkspace(xml, workspace);
             };
             reader.readAsText(file);
+        }
+
+        function exportCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            var blob = new Blob([code], {type: 'text/javascript'});
+            var a = document.createElement('a');
+            a.download = 'code.js';
+            a.href = URL.createObjectURL(blob);
+            a.click();
         }
 
     </script>
