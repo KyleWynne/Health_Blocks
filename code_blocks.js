@@ -3,7 +3,7 @@ Blockly.Blocks['setup_nutritionix'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("set up Nutritionix API with credentials");
-    this.setPreviousStatement(true, null);
+    // this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
     this.setTooltip("");
