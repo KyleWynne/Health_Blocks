@@ -28,6 +28,13 @@ Natural exercise endpont samples
 
 ## Github.io Pages
 
+https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+
+Creating a Github.io page from your repository
+
+https://github.com/marketplace/actions/github-pages-overwriter#how-to-use-it
+
+Github pages repository
 
 ## Dieting Info
 
