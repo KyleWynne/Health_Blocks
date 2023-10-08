@@ -1,5 +1,34 @@
 # Annotated References
 
+## Nutritionix API
+
+https://docs.google.com/document/d/1_q-K-ObMTZvO0qUEAxROrN3bwMujwAN25sLHwJzliK0/edit
+
+Official Nutrionix API Documentation
+
+https://trackapi.nutritionix.com/docs/#/default/post_v2_auth_signin
+
+Full list of endpoints for Nutritionix API V2
+
+https://www.nutritionix.com/natural-demo?q=1%20cup%20mashed%20potatoes%20and%202%20tbsp%20gravy
+
+Natural language processing Nutritionix API demo
+
+https://www.nutritionix.com/dashboard
+
+Nutritionix API track example application using the database and endpoints
+
+https://developer.nutritionix.com/admin/applications/1409623852290
+
+Nutrionix API admin key and id login 
+
+https://gist.github.com/mattsilv/d99cd145cc2d44d71fa5d15dd4829e03?permalink_comment_id=3728499
+
+Natural exercise endpont samples
+
+## Github.io Pages
+
+
 ## Dieting Info
 
 https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/weight-loss/art-20047752 
