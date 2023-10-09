@@ -104,7 +104,7 @@ Blockly.Blocks['calorie_sum'] = {
 Blockly.JavaScript['calorie_sum'] = function(block) {
   var value_var1 = Blockly.JavaScript.valueToCode(block, 'var1', Blockly.JavaScript.ORDER_ATOMIC);
   var value_var2 = Blockly.JavaScript.valueToCode(block, 'var2', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '('+value_var1+'+'+value_var2+')\n';
+  var code = value_var1+value_var2;
   return code;
 };
 
