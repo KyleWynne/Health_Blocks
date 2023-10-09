@@ -1,5 +1,34 @@
 # Preliminary block designs
 
+## API Set Up
+- Block to set up Nutritionix API with credentials
+
+## Food Input
+- Block to allow the call the Nutrutionix API for a food search
+- Text block to input food string
+
+## Calorie Input
+- Block for number of calories needed to be consumed
+- Block to sum up calories
+
+  
+# high-level descriptions
+
+## API Set Up 
+- API Set Up: This block serves as the initial setup for integrating the Nutritionix API into the program. It allows users to avoid having to put in API credentials, such as an API key or authentication tokens, ensuring that the program can securely access Nutritionix data without each individual having to set it up.
+
+## Exercise Blocks
+- Food Match: This block enables users to initiate a call to the Nutritionix API for food search. It acts as a trigger for fetching nutritional information about specific foods.
+- Text Input: This text block allows users to input the name or description of the food they want to search for within the API.
+
+## Motivation Blocks
+- Calorie Amount: This block provides a way for users to specify the number of calories they need to consume. 
+- Recursive Sum: The block does not generate code but performs the full recursive sum and serves as the input.
+
+<details>
+<summary>Old Project Design File</summary>
+# Preliminary block designs
+
 ## Dietary Blocks 
 - Log Food Intake: This lets users record the foods they eat, along with nutritional information (user-generated, not language-generated).
 - Calculate Calories Burned: Computes the calories burned during a specified exercise
@@ -33,3 +62,5 @@
 - Set Goal / Reward: This block allows users to set personalized exercise goals, such as running a certain distance or reaching a specific weightlifting target. Users can also define a reward for themselves upon achieving these goals, providing motivation.
 - Set Daily Step Goal: When this block is used, users can specify a daily step count goal, which will be tracked and displayed in their fitness plan. Users can adjust this goal as their fitness level and progress change.
 - Set Calorie Intake Goal: This block allows users to set daily calorie intake goals based on their dietary objectives, such as weight loss or maintenance. It helps users monitor their calorie consumption and stay within their target range.
+
+</details>
