@@ -2,6 +2,57 @@
 
 ## Pseudo Code
 
+### API Set Up
+- **Code**: SetUp()
+- **Output ()**: 
+  - No output in API and Node.js is set up correcting. Error message detailing API and Node.js set up if not working correctly.
+
+### Food Match
+- **Code**: FoodMatch()
+- **Output ()**: 
+  - Nutritional facts for inputed food item.
+
+### Text Input
+- **Code**: TextInput()
+- **Output ()**:
+  - The text input is recieved the API.
+
+### Calorie Amount
+- **Code**: CalorieAmount()
+- **Output ()**:
+  - The number input is recieved the API.
+
+### Recursive Sum
+- **Code**: RecursiveSum()
+- **Output ()**:
+  - No code is generated but the full recursive sum is used as the input.
+
+## Recursion Use Case
+Imagine a user wants to create a personalized diet plan using Blockly. They start with a Calorie Input block to specify their daily calorie goal (e.g., 2000 calories). They use a Food Input block to search for a food item (e.g., "apple") and a Recursive Sum block to keep track of the total calories consumed.
+
+Here's a sequence of Blockly actions:
+
+Calorie Input (Set daily goal to 2000 calories)
+Food Input (Search for "apple" - returns 95 calories)
+Recursive Sum (Add 95 calories to the total)
+Food Input (Search for "grilled chicken" - returns 165 calories)
+Recursive Sum (Add 165 calories to the total)
+
+The program calculates the total calories consumed and ensures it doesn't exceed the daily goal. Users can continue adding more foods, and the Recursive Sum block will keep updating the total. This demonstrates how Blockly allows users to create complex diet planning programs by combining a few simple blocks.
+
+## Project Data
+Input Data: Users input data into the program using various blocks, such as the "Text Input" block to specify food names and the "Calorie Input" block to set calorie goals. This data is fundamental for the program to operate effectively.
+
+Processing: Blocks like "Food Input" initiate requests to the Nutritionix API based on the user's input. These blocks process the incoming data from the API, which includes nutritional information about the specified foods. This processing step involves parsing and interpreting the data to extract relevant details.
+
+Output Data: The program generates output data in the form of nutritional information. Users receive this data in a clear and user-friendly format, allowing them to make informed dietary decisions. The "Recursive Sum" block, for example, could output the total calories consumed.
+
+<details>
+<summary>Old Project Design2 File</summary>
+# Design 2
+
+## Pseudo Code
+
 ### Log Food Intake
 - **Code**: `LogFood(food, calories)`
 - **Output ()**: 
@@ -91,3 +142,4 @@ Based on the above functions, the things our project would have to store include
 This is the list of data we need to storer given the functions we have created thus far. However, this list can and most likely will be updated to reflect the progress made and additions to the project. Most of the above data can be stored in a single variable or in a list of lists or dictionaries. This is due to the fact that we want users to be able to create objects (such as an exercise session) and add attributes and details to them. 
 
 The blockbased programming language will interact with this data and compliments it quite well. As a user creates an exercise session, for example, we can connect that to the declaration of a variable or of a list item. Then, as they add more details or attributes, we can call upon that already declared item and pass through the user-inputted information. Therefore, it will allow a smooth transition from the user input in the block-based language into the back-end code that manages such data. 
+</details>
