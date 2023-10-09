@@ -12,7 +12,7 @@ In terms of this milestone, Kyle and Natalie both did some research and tested h
 
 ## AI Contribution
 
-We have AI, specifically ChatGPT, in the process of understanding how the APIs and the API calls we are using function. Personally (coming from natalie), I have limited experience with working with javascript, github.io, etc. so I was able to use AI to help give me context on how to structure our code, what files are needed, etc. I also used it to help me undestand, for example, how an API and an API call works. So, AI was used in the process of this project so far. However, all code has been written by members of the group or taken from the example repository from Professor Kurz. 
+We have AI, specifically ChatGPT and GitHub copilot, in the process of understanding how the APIs and the API calls we are using function. Personally (coming from natalie), I have limited experience with working with javascript, github.io, etc. so I was able to use AI to help give me context on how to structure our code, what files are needed, etc. I also used it to help me undestand, for example, how an API and an API call works. So, AI was used in the process of this project so far. However, all code has been written by members of the group or taken from the example repository from Professor Kurz. 
 
 ## Contribution Links
 
