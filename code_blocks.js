@@ -3,7 +3,7 @@ Blockly.Blocks['setup_nutritionix'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("set up Nutritionix API with credentials");
-    // this.setPreviousStatement(true, null);
+    //this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
     this.setTooltip("");
@@ -27,7 +27,7 @@ Blockly.Blocks['search_foods'] = {
     this.appendValueInput("query")
         .setCheck(null)
         .appendField("search for foods matching");
-    this.setOutput(true, null);
+    //this.setOutput(true, null);
     this.setColour(230);
     this.setTooltip("");
     this.setHelpUrl("");
@@ -69,6 +69,7 @@ Blockly.JavaScript['search_foods'] = function(block) {
 Blockly.Blocks['text_input'] = {
   init: function() {
     this.appendDummyInput()
+        .appendField("text input:")
         .appendField(new Blockly.FieldTextInput(''), 'TEXT');
     this.setOutput(true, 'String');
     this.setColour(160);
@@ -83,6 +84,51 @@ Blockly.JavaScript['text_input'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.Blocks['calorie_sum'] = {
+  init: function() {
+    this.appendValueInput("var1")
+        .setCheck(null)
+        .appendField("Calorie sum of");
+    this.appendValueInput("var2")
+        .setCheck(null)
+        .appendField("and");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setOutput(true, "Number");
+    this.setColour(75);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['calorie_sum'] = function(block) {
+  var value_var1 = Blockly.JavaScript.valueToCode(block, 'var1', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_var2 = Blockly.JavaScript.valueToCode(block, 'var2', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = '('+value_var1+'+'+value_var2+')\n';
+  return code;
+};
+
+Blockly.Blocks['get_integer'] = {
+  /**
+   * Block for numeric value.
+   * @this {Blockly.Block}
+   */
+  init: function() {
+    this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
+    this.setColour(Blockly.Msg.MATH_HUE);
+    this.appendDummyInput()
+        .appendField("calorie Intake: (int)")
+        .appendField(new Blockly.FieldNumber('3'), 'NUM');
+    this.setOutput(true, 'Number');
+    this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
+  }
+};
+
+Blockly.JavaScript['get_integer'] = function(block) {
+  // Numeric value.
+  var code = parseFloat(block.getFieldValue('NUM'));
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+}
 
 
 function exportCode() {

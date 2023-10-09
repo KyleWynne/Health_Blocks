@@ -4,7 +4,11 @@
     <block type="text_input">
       <field name="TEXT">chicken</field>
     </block>
+    <block type="get_integer"></block>
+    <block type="gcalorie_sum"></block>
     <block type="search_foods"></block>
+    <block type="search_foods_recursive"></block>
+    <block type="sum_recursive"></block>
   </category>
   <sep></sep>
   <category name="Export" colour="160">
