@@ -1,17 +1,16 @@
 <xml id="toolbox" style="display: none">
-  <category name="Nutritionix" colour="210">
-    <block type="setup_nutritionix"></block>
+  <category name="Input" colour="210">
     <block type="text_input">
       <field name="TEXT">chicken</field>
     </block>
     <block type="get_integer"></block>
-    <block type="gcalorie_sum"></block>
-    <block type="search_foods"></block>
-    <block type="search_foods_recursive"></block>
-    <block type="sum_recursive"></block>
   </category>
-  <sep></sep>
-  <category name="Export" colour="160">
-    <button text="Export Code" callbackKey="exportCode"></button>
+  <category name="Output" colour="160">
+    <block type="calorie_sum"></block>
+    <block type="print_calories"></block>
+  </category>
+  <category name="Control" colour="120">
+    <block type="setup_nutritionix"></block>
+    <block type="search_foods"></block>
   </category>
 </xml>
