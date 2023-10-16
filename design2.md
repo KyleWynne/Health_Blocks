@@ -5,7 +5,7 @@
 ### API Set Up
 - **Code**: SetUp()
 - **Output ()**: 
-  - No output in API and Node.js is set up correcting. Error message detailing API and Node.js set up if not working correctly.
+  - No output if API and Node.js is set up correctly. Error message detailing API and Node.js set up if not working correctly.
 
 ### Food Match
 - **Code**: FoodMatch()
