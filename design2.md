@@ -10,7 +10,7 @@
 ### Food Match
 - **Code**: FoodMatch()
 - **Output ()**: 
-  - Nutritional facts for inputed food item.
+  - Nutritional facts for imputed food item.
 
 ### Text Input
 - **Code**: TextInput()
@@ -20,7 +20,7 @@
 ### Calorie Amount
 - **Code**: CalorieAmount()
 - **Output ()**:
-  - The number input is recieved the API.
+  - The number input is received the API.
 
 ### Recursive Sum
 - **Code**: RecursiveSum()
