@@ -4,12 +4,11 @@
 
 ## Instructions For Running Our Project
 
-To recreate the demo, follow the below instructions:
-Go to GitHub the Pages Deployment: Here
-if running on your machine, navigate to index.html in your filesystem, double-click, and open with the browser of your choice
+To test the code, follow the below instructions:
+clone the repository. 
+navigate to index.html in your filesystem, double-click, and open with the browser of your choice
 
 use the blocks to create code. Our recommended test is:
-
 set up nutritionix API
 Search foods -> Text Input: apple
 Print Calories -> Calorie Sum (300, Calorie Sum (300, 400)
