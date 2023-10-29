@@ -2,6 +2,10 @@
 
 **Group Members:** Natalie Huante, Kyle Wynne, Lauren Szlosek
 
+## Instructions For Running Our Project
+
+
+
 ## Project Description & Motivation: 
 
 The original aim of this project was to provide an accessible and user-friendly program for users to create individualized health and fitness through the integration of the Blockly API. However, upon revisions and discussions with Professor Kurz, we can shifted the end goal of this project. Now, the goal of this project is to provide an accessible and user-friendly program for users to look up nutritional information on their meals. We will use the Blockly API as the foundation for the program and implement a domain specific language that will provide users with a more customized experience. We plan to have users be able to enter information about their meals and then provide them with nutrional details. 
