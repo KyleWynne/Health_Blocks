@@ -22,6 +22,7 @@
     </div>
     <div class="row button-row">
         <button onclick="generateCode()">Generate JavaScript</button>
+        <button onclick="runCode()">Run JavaScript</button>
         <button onclick="exportCode()">Export JavaScript</button>
         <button onclick="saveBlocks()">Save Blocks</button>
         <button onclick="loadBlocks()">Load Blocks</button>
@@ -40,6 +41,22 @@
         function generateCode() {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
             document.getElementById('codeDiv').innerText = code;
+        }
+
+        function runCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            var log = console.log;
+            var output = '';
+            console.log = function (message) {
+            output += message + '\n';
+            };
+            try {
+                eval(code);
+                document.getElementById('outputDiv').innerText = output;
+            } catch (e) {
+                document.getElementById('outputDiv').innerText = 'Error: ' + e;
+            }
+            console.log = log;  // Restore original console.log function
         }
 
         function saveBlocks() {
