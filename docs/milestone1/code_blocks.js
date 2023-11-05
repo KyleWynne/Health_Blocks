@@ -39,6 +39,19 @@ Blockly.Blocks['search_foods'] = {
   }
 };
 
+// New block to get nutrition data for a food
+Blockly.Blocks['get_nutrition_data'] = {
+init: function() {
+this.appendValueInput("food_id")
+.setCheck("Number")
+.appendField("get nutrition data for food ID");
+this.setOutput(true, null);
+this.setColour(230);
+this.setTooltip("");
+this.setHelpUrl("");
+}
+};
+
 // functionality of the search_foods block
 Blockly.JavaScript['search_foods'] = function(block) {
   var value_query = Blockly.JavaScript.valueToCode(block, 'query', Blockly.JavaScript.ORDER_NONE);
