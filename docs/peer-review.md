@@ -1,1 +1,3 @@
+How We are taking Peer Review feedback into account for our final project:
 
+The main concern expressed by our peer reviewers was that our documentation needed an update. Thankfully and peer reviewer was kind enough to add the changes that they saw fit but we must also make sure our instructions for running our project are as explicit as possible and leave as little room for error as we can. Another popular suggestion/feedback has been adding a execute code button. We are looking into possible solutions right now as to why we get an object promise when we use our run code button or how to implement the node.js compiler which is necessary for the API calls to run correctly.
