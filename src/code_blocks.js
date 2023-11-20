@@ -17,8 +17,10 @@ Blockly.JavaScript['setup_nutritionix'] = function(block) {
               '// You must install the node-fetch package\n' +
               '// To install node-fetch, open a terminal window and run "npm install node-fetch"\n' +
               '// and run the command "node code.js"\n' +
+              'import fetch from "node-fetch";\n'+
               'var app_id = "d2676aeb";\n' +
-              'var app_key = "71a81a0317f71223d497357fad94e222";\n';
+              'var app_key = "71a81a0317f71223d497357fad94e222";\n'+
+              '\n';
   return code;
 };
 
@@ -42,7 +44,7 @@ Blockly.JavaScript['search_foods'] = function(block) {
     var value_query = Blockly.JavaScript.valueToCode(block, 'query', Blockly.JavaScript.ORDER_NONE);
     var generatedCode = 'const foodName = '+ value_query +'; // Replace with the food you want to search for \n' +
     'const apiUrl = `https://trackapi.nutritionix.com/v2/search/instant?query=${foodName}`; \n' +
-    'const headers = { \n' +
+    'var headers = { \n' +
     ' "x-app-id": app_id,\n' +
     ' "x-app-key": app_key,\n' +
     ' "x-remote-user-id": 0\n' +
@@ -60,7 +62,7 @@ Blockly.JavaScript['search_foods'] = function(block) {
     ' })\n' +
     ' .catch((error) => {\n' +
     '   console.error("Error:", error);\n' +
-    ' });';
+    ' });\n';
   
     return generatedCode;
   };
@@ -117,7 +119,7 @@ Blockly.Blocks['get_integer'] = {
     this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
     this.setColour(Blockly.Msg.MATH_HUE);
     this.appendDummyInput()
-        .appendField("calorie Intake: (int)")
+        .appendField("num input: ")
         .appendField(new Blockly.FieldNumber('3'), 'NUM');
     this.setOutput(true, 'Number');
     this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
@@ -149,6 +151,125 @@ Blockly.JavaScript['print_calories'] = function(block) {
   var code = 'console.log("total calories: "+ '+value_calories+');\n';
   return code;
 };
+
+Blockly.Blocks['nlp_exercise'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("nlp exercise")
+    this.appendValueInput("QUERY")
+        .setCheck("String")
+        .appendField("Query");
+    this.appendDummyInput()
+        .appendField("Gender")
+        .appendField(new Blockly.FieldDropdown([["Male","MALE"], ["Female","FEMALE"]]), "GENDER");
+    this.appendValueInput("HEIGHT")
+        .setCheck("Number")
+        .appendField("Height (cm)");
+    this.appendValueInput("WEIGHT")
+        .setCheck("Number")
+        .appendField("Weight (kg)");
+    this.appendValueInput("AGE")
+        .setCheck("Number")
+        .appendField("Age");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setOutput(false, null);
+    this.setColour(230);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['nlp_exercise'] = function(block) {
+  var Query = Blockly.JavaScript.valueToCode(block, 'QUERY', Blockly.JavaScript.ORDER_ATOMIC);
+  var Gender = block.getFieldValue('GENDER');
+  var Height = Blockly.JavaScript.valueToCode(block, 'HEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
+  var Weight = Blockly.JavaScript.valueToCode(block, 'WEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
+  var Age = Blockly.JavaScript.valueToCode(block, 'AGE', Blockly.JavaScript.ORDER_ATOMIC);
+  Blockly.JavaScript['nlp_exercise'] = function(block) {
+  var code = '\n' +
+  'var headers = { \n' +
+  '  "x-app-id": app_id,\n'+
+  '  "x-app-key": app_key,\n'+
+  '  "x-remote-user-id": 0,\n'+
+  '  "Content-type": "application/json"\n'+
+  '}; \n'+
+  '\n'+
+  'const exercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise";\n'+
+  'const exercise_input = '+Query+';\n'+
+  '\n'+
+  'const GENDER = "'+Gender+'";\n'+
+  'const WEIGHT_KG = "'+Weight+'";\n'+
+  'const HEIGHT = "'+Height+'";\n'+
+  'const AGE = "'+Age+'";\n'+
+  '\n'+
+  'var parameters = {\n'+
+  '  "query": exercise_input,\n'+
+  '  "gender": GENDER,\n'+
+  '  "weight_kg": WEIGHT_KG,\n'+
+  '  "height_cm": HEIGHT,\n'+
+  '  "age": AGE,\n'+
+  '} \n'+
+  '\n'+
+  'fetch(exercise_endpoint, { \n'+
+  '  method: "POST",\n'+
+  '  headers: headers,\n'+
+  '  body: JSON.stringify(parameters)\n'+
+  '})\n'+
+  '.then(response => response.json())\n'+
+  '.then(data => console.log(data))\n'+
+  '.catch(error => console.error("Error:", error));\n';
+  return code;
+  };
+}
+
+Blockly.Blocks['nlp_nutrition'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField("nlp nutrition")
+    this.appendValueInput("QUERY")
+    .setCheck("String")
+    .appendField("Query");
+    this.setInputsInline(false);
+    this.setOutput(false, null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['nlp_nutrition'] = function(block) {
+  var Query = Blockly.JavaScript.valueToCode(block, 'QUERY', Blockly.JavaScript.ORDER_ATOMIC);
+  Blockly.JavaScript['nlp_nutrition'] = function(block) {
+  var code = '\n' +
+  'var headers = { \n' +
+  '  "x-app-id": app_id,\n'+
+  '  "x-app-key": app_key,\n'+
+  '  "x-remote-user-id": 0,\n'+
+  '  "Content-type": "application/json"\n'+
+  '}; \n'+
+  '\n'+
+  'const nutritionix_endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients";\n'+
+  'const nutritionix_input = "ate 3 eggs and toast for breakfast";\n'+
+  '\n'+
+  'var parameters = {\n'+
+  '  "query": nutritionix_input,\n'+
+  '} \n'+
+  '\n'+
+  'fetch(nutritionix_endpoint, { \n'+
+  '  method: "POST",\n'+
+  '  headers: headers,\n'+
+  '  body: JSON.stringify(parameters)\n'+
+  '})\n'+
+  '.then(response => response.json())\n'+
+  '.then(data => console.log(data))\n'+
+  '.catch(error => console.error("Error:", error));\n';
+  return code;
+  }
+}
 
 function exportCode() {
   var code = Blockly.JavaScript.workspaceToCode(workspace);
