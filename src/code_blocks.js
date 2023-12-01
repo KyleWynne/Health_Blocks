@@ -17,7 +17,6 @@ Blockly.JavaScript['setup_nutritionix'] = function(block) {
               '// You must install the node-fetch package\n' +
               '// To install node-fetch, open a terminal window and run "npm install node-fetch"\n' +
               '// and run the command "node code.js"\n' +
-              'import fetch from "node-fetch";\n'+
               'var app_id = "d2676aeb";\n' +
               'var app_key = "71a81a0317f71223d497357fad94e222";\n'+
               '\n';
@@ -253,7 +252,7 @@ Blockly.JavaScript['nlp_nutrition'] = function(block) {
   '}; \n'+
   '\n'+
   'const nutritionix_endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients";\n'+
-  'const nutritionix_input = "ate 3 eggs and toast for breakfast";\n'+
+  'const nutritionix_input = '+Query+';\n'+
   '\n'+
   'var parameters = {\n'+
   '  "query": nutritionix_input,\n'+
@@ -265,7 +264,7 @@ Blockly.JavaScript['nlp_nutrition'] = function(block) {
   '  body: JSON.stringify(parameters)\n'+
   '})\n'+
   '.then(response => response.json())\n'+
-  '.then(data => console.log(data))\n'+
+  '.then(data => { return data; }) // Return the data instead of logging it'+
   '.catch(error => console.error("Error:", error));\n';
   return code;
   }

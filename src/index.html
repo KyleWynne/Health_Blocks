@@ -24,6 +24,7 @@
     </div>
     <div class="row button-row">
         <button onclick="generateCode()">Generate JavaScript</button>
+        <button onclick="runCode()">Run JavaScript</button>
         <button onclick="exportCode()">Export JavaScript</button>
         <button onclick="saveBlocks()">Save Blocks</button>
         <button onclick="loadBlocks()">Load Blocks</button>
@@ -44,21 +45,43 @@
             document.getElementById('codeDiv').innerText = code;
         }
 
-        function runCode() {
+        async function runCode() {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
-            var log = console.log;
-            var output = '';
-            console.log = function (message) {
-            output += message + '\n';
-            };
             try {
-                eval(code);
-                document.getElementById('outputDiv').innerText = output;
+                const response = await fetch('http://localhost:3000/run-code', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code })
+                });
+                if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.text();
+                document.getElementById('outputDiv').innerText = result;
             } catch (e) {
+                console.error(e);
                 document.getElementById('outputDiv').innerText = 'Error: ' + e;
             }
-            console.log = log;  // Restore original console.log function
         }
+
+        // function runCode() {
+        //     var code = Blockly.JavaScript.workspaceToCode(workspace);
+        //     var log = console.log;
+        //     var output = '';
+        //     console.log = function (message) {
+        //     output += message + '\n';
+        //     };
+        //     try {
+        //         eval(code);
+        //         document.getElementById('outputDiv').innerText = output;
+        //     } catch (e) {
+        //         console.error(e);
+        //         document.getElementById('outputDiv').innerText = 'Error: ' + e;
+        //     }
+        //     console.log = log;  // Restore original console.log function
+        // }
 
         function saveBlocks() {
             var xml = Blockly.Xml.workspaceToDom(workspace);
