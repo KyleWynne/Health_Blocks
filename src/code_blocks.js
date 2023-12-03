@@ -5,7 +5,7 @@ Blockly.Blocks['setup_nutritionix'] = {
         .appendField("set up Nutritionix API with credentials");
     //this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(60);
+    this.setColour(30);
     this.setTooltip("");
     this.setHelpUrl("");
   }
@@ -29,7 +29,7 @@ Blockly.Blocks['search_foods'] = {
         .setCheck(null)
         .appendField("search for foods matching");
     //this.setOutput(true, null);
-    this.setColour(110);
+    this.setColour(180);
     this.setTooltip("");
     this.setHelpUrl("");
     this.setPreviousStatement(true, null);
@@ -56,9 +56,7 @@ Blockly.JavaScript['search_foods'] = function(block) {
     '     throw new Error(`Error: HTTP response code ${response.status}`);\n' +
     '   }\n' +
     ' })\n' +
-    ' .then((data) => {\n' +
-    '   console.log(data);\n' +
-    ' })\n' +
+    ' .then(data => { return data; })\n' +
     ' .catch((error) => {\n' +
     '   console.error("Error:", error);\n' +
     ' });\n';
@@ -73,7 +71,7 @@ Blockly.Blocks['text_input'] = {
         .appendField("text input:")
         .appendField(new Blockly.FieldTextInput(''), 'TEXT');
     this.setOutput(true, 'String');
-    this.setColour(160);
+    this.setColour(200);
     this.setTooltip("");
     this.setHelpUrl("");
   }
@@ -174,7 +172,7 @@ Blockly.Blocks['nlp_exercise'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setOutput(false, null);
-    this.setColour(230);
+    this.setColour(70);
     this.setTooltip("");
     this.setHelpUrl("");
   }
@@ -217,7 +215,7 @@ Blockly.JavaScript['nlp_exercise'] = function(block) {
   '  body: JSON.stringify(parameters)\n'+
   '})\n'+
   '.then(response => response.json())\n'+
-  '.then(data => console.log(data))\n'+
+  '.then(data => { return data; })\n'+
   '.catch(error => console.error("Error:", error));\n';
   return code;
   };
@@ -234,7 +232,7 @@ Blockly.Blocks['nlp_nutrition'] = {
     this.setOutput(false, null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(95);
     this.setTooltip("");
     this.setHelpUrl("");
   }
