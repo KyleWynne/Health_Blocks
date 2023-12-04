@@ -145,9 +145,20 @@ Blockly.Blocks['print_calories'] = {
 
 Blockly.JavaScript['print_calories'] = function(block) {
   var value_calories = Blockly.JavaScript.valueToCode(block, 'CALORIES', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'console.log("total calories: "+ '+value_calories+');\n';
+  var code = 'function printCalories() {\n' +
+             '  var calories = "total calories: "+ '+value_calories+';\n'+
+             '  return calories;\n' +
+             '}\n' +
+             'printCalories();\n';
   return code;
 };
+
+// Blockly.JavaScript['print_calories'] = function(block) {
+//   var value_calories = Blockly.JavaScript.valueToCode(block, 'CALORIES', Blockly.JavaScript.ORDER_ATOMIC);
+//   var code = 'var calories = "total calories: "+ "'+value_calories+'";\n'+
+//   'return calories;\n';
+//   return code;
+// };
 
 Blockly.Blocks['nlp_exercise'] = {
   init: function() {
