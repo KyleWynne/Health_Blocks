@@ -39,7 +39,7 @@ Blockly.Blocks['search_foods'] = {
 
 Blockly.JavaScript['search_foods'] = function(block) {
   var value_query = Blockly.JavaScript.valueToCode(block, 'query', Blockly.JavaScript.ORDER_NONE);
-  Blockly.JavaScript['search_foods'] = function(block) {
+  //Blockly.JavaScript['search_foods'] = function(block) {
     var value_query = Blockly.JavaScript.valueToCode(block, 'query', Blockly.JavaScript.ORDER_NONE);
     var generatedCode = 'const foodName = '+ value_query +'; // Replace with the food you want to search for \n' +
     'const apiUrl = `https://trackapi.nutritionix.com/v2/search/instant?query=${foodName}`; \n' +
@@ -62,7 +62,7 @@ Blockly.JavaScript['search_foods'] = function(block) {
     ' });\n';
   
     return generatedCode;
-  };
+  //};
 };
 
 Blockly.Blocks['text_input'] = {
@@ -184,7 +184,7 @@ Blockly.JavaScript['nlp_exercise'] = function(block) {
   var Height = Blockly.JavaScript.valueToCode(block, 'HEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
   var Weight = Blockly.JavaScript.valueToCode(block, 'WEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
   var Age = Blockly.JavaScript.valueToCode(block, 'AGE', Blockly.JavaScript.ORDER_ATOMIC);
-  Blockly.JavaScript['nlp_exercise'] = function(block) {
+  //Blockly.JavaScript['nlp_exercise'] = function(block) {
   var code = '\n' +
   'var headers = { \n' +
   '  "x-app-id": app_id,\n'+
@@ -218,7 +218,7 @@ Blockly.JavaScript['nlp_exercise'] = function(block) {
   '.then(data => { return data; })\n'+
   '.catch(error => console.error("Error:", error));\n';
   return code;
-  };
+  //};
 }
 
 Blockly.Blocks['nlp_nutrition'] = {
@@ -240,7 +240,7 @@ Blockly.Blocks['nlp_nutrition'] = {
 
 Blockly.JavaScript['nlp_nutrition'] = function(block) {
   var Query = Blockly.JavaScript.valueToCode(block, 'QUERY', Blockly.JavaScript.ORDER_ATOMIC);
-  Blockly.JavaScript['nlp_nutrition'] = function(block) {
+  //Blockly.JavaScript['nlp_nutrition'] = function(block) {
   var code = '\n' +
   'var headers = { \n' +
   '  "x-app-id": app_id,\n'+
@@ -262,11 +262,30 @@ Blockly.JavaScript['nlp_nutrition'] = function(block) {
   '  body: JSON.stringify(parameters)\n'+
   '})\n'+
   '.then(response => response.json())\n'+
-  '.then(data => { return data; }) // Return the data instead of logging it'+
+  '.then(data => { return data; }) // Return the data instead of logging it\n' +
+  '//.then(data => console.log(data)) //comment this line in when running on the console\n'+
   '.catch(error => console.error("Error:", error));\n';
   return code;
-  }
+  //}
 }
+
+Blockly.Blocks['Search_ID'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Search ID ")
+        .appendField(new Blockly.FieldTextInput('nix_item_id'), 'TEXT');
+    this.setOutput(true, 'String');
+    this.setColour(200);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['Search_ID'] = function(block) {
+  var text = block.getFieldValue('TEXT');
+  var code = '"' + text + '"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 
 function exportCode() {
   var code = Blockly.JavaScript.workspaceToCode(workspace);

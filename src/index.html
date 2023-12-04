@@ -18,6 +18,8 @@
             <block type="search_foods"></block>
             <block type="text_input"></block>
             <block type="get_integer"></block>
+            <block type="print_calories"></block>
+            <block type="calorie_sum"></block>
         </xml>
     </div>
     <div class="row button-row">
@@ -57,7 +59,8 @@
                 throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const result = await response.text();
-                document.getElementById('outputDiv').innerText = result;
+                const outputDiv = document.getElementById('outputDiv');
+                outputDiv.innerText += result + '\n';
             } catch (e) {
                 console.error(e);
                 document.getElementById('outputDiv').innerText = 'Error: ' + e;
