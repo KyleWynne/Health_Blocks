@@ -7,6 +7,15 @@
 ## Instructions
 
 To test the code, follow the below instructions: <br />
+
+There are two methods you can use to compile and run the code <br />
+
+### Method 1: Use the server:
+
+
+
+### Method 2: Use the console:
+
 navigate to index.html in your filesystem, double-click, and open with the browser of your choice <br />
 
 use the blocks to create code. Our recommended test is: <br />
