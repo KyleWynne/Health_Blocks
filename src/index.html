@@ -7,8 +7,21 @@
     <script src="https://unpkg.com/whammy/whammy.min.js"></script>
     <script src="code_blocks.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        h1, #instructions {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <h1>Health Blocks</h1>
+    <section id="instructions">
+        Important Reminders: <br>
+        The "Run JavaScript" button runs the code on a server. Due to security concerns we ask that you run the server on your local host<br>
+        When using the Run JavaScript button, regenerate and run code after using Each Block<br>
+        The export code button will download a file called code.js which can be run with the node.js compiler<br>
+        See More detailed instructions <a href="https://github.com/KyleWynne/Health_Blocks/blob/main/README.md"> here </a>
+    </section>
     <div class="row">
         <div id="blocklyDiv" class="full-width"></div>
         <xml id="toolbox" style="display: none">
@@ -25,6 +38,7 @@
     <div class="row button-row">
         <button onclick="generateCode()">Generate JavaScript</button>
         <button onclick="runCode()">Run JavaScript</button>
+        <button onclick="clearOutput()">Clear Output</button>
         <button onclick="exportCode()">Export JavaScript</button>
         <button onclick="saveBlocks()">Save Blocks</button>
         <button onclick="loadBlocks()">Load Blocks</button>
@@ -46,43 +60,49 @@
         }
 
         async function runCode() {
-            var code = Blockly.JavaScript.workspaceToCode(workspace);
-            try {
-                const response = await fetch('http://localhost:3000/run-code', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ code })
-                });
-                if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            let port = 3000;
+            let response;
+            while (true) {
+                try {
+                    const code = Blockly.JavaScript.workspaceToCode(workspace);
+                    var log = console.log;
+                    var output = '';
+                    console.log = function (message) {
+                        output += message + '\n';
+                    };
+
+                    response = await fetch(`http://localhost:${port}/run-code`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ code })
+                    });
+                    if (response.ok) {
+                        const result = await response.text();
+                        const outputDiv = document.getElementById('outputDiv');
+                        outputDiv.innerText += result + '\n';
+                        break;
+                    } else if (response.status === 404) {
+                        port++;
+                    } else {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                } catch (e) {
+                    if (e instanceof TypeError) {
+                    port++;
+                    } else {
+                    console.error(e);
+                    document.getElementById('outputDiv').innerText = 'Error: ' + e;
+                    return;
+                    }
                 }
-                const result = await response.text();
-                const outputDiv = document.getElementById('outputDiv');
-                outputDiv.innerText += result + '\n';
-            } catch (e) {
-                console.error(e);
-                document.getElementById('outputDiv').innerText = 'Error: ' + e;
             }
         }
 
-        // function runCode() {
-        //     var code = Blockly.JavaScript.workspaceToCode(workspace);
-        //     var log = console.log;
-        //     var output = '';
-        //     console.log = function (message) {
-        //     output += message + '\n';
-        //     };
-        //     try {
-        //         eval(code);
-        //         document.getElementById('outputDiv').innerText = output;
-        //     } catch (e) {
-        //         console.error(e);
-        //         document.getElementById('outputDiv').innerText = 'Error: ' + e;
-        //     }
-        //     console.log = log;  // Restore original console.log function
-        // }
+        function clearOutput() {
+            document.getElementById('outputDiv').innerText = '';
+        }
 
         function saveBlocks() {
             var xml = Blockly.Xml.workspaceToDom(workspace);

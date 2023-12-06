@@ -1,51 +1,30 @@
 import express from 'express';
-import { exec } from 'child_process';
 import cors from 'cors';
 import vm from 'vm';
 
 const app = express();
-const port = 3000;
+let port = 3000;
 
 app.use(cors());
 app.use(express.json());
 
 let queue = [];
 
-// app.post('/run-code', async (req, res) => {
-//   queue.push({ req, res });
+const server = app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
-//   if (queue.length === 1) {
-//     processQueue();
-//   }
-// });
-
-// async function processQueue() {
-//   if (queue.length === 0) return;
-
-//   const { req, res } = queue[0];
-//   const { code } = req.body;
-
-//   console.log("Executing Code: ", code);
-  
-//   try {
-//     const script = new vm.Script(code);
-//     const context = { fetch, Promise };
-
-//     const result = script.runInContext(vm.createContext(context));
-//     const output = await Promise.resolve(result);
-//     console.log(`Output: ${JSON.stringify(output)}`);
-//     res.send(`Output: ${JSON.stringify(output)}`);
-
-//     console.log(`Output: ${output}`);
-//     res.send(`Output: ${output}`);
-//   } catch (error) {
-//     console.error(`Execution error: ${error}`);
-//     res.send(`Execution error: ${error}`);
-//   } finally {
-//     queue.shift();
-//     processQueue();
-//   }
-// }
+server.on('error', (error) => {
+  if (error.code === 'EADDRINUSE') {
+    console.log(`Port ${port} is in use, trying with port ${port + 1}`);
+    port++;
+    server.close();
+    server.listen(port);
+  } else {
+    // Handle other errors
+    console.error(error);
+  }
+});
 
 app.post('/run-code', async (req, res) => { // Make the function async
   const { code } = req.body;
@@ -67,8 +46,4 @@ app.post('/run-code', async (req, res) => { // Make the function async
     console.error(`Execution error: ${error}`);
     return res.status(500).send(`Execution error: ${error}`);
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
 });
