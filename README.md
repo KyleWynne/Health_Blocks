@@ -12,12 +12,29 @@ There are two methods you can use to compile and run the code <br />
 
 ### Method 1: Use the server:
 
+Step 1: Clone our project using git
+To install the project dependencies, run the following command in your terminal:
 
+```bash
+git clone https://github.com/KyleWynne/Health_Blocks.git
+```
+You will need to navigate to the Health_Blocks directory in the console and run the following 2 commands <br />
+if you see the line: Server running on port 3000, Congratulations, your server is running
+
+```bash
+chmod +x Build.sh
+./Build.sh
+```
+
+This Shellscript will install the node compiler, all necessary libraries, and run the server on your computer. <br />
+you can now go back to the github.io website at https://kylewynne.github.io/Health_Blocks/ and use the Run JavaScript button! <br />
+**IMPORTANT NOTE:**
+When using the code blocks with the Run JavaScript button, run the code after each new block is added to the vertical stack. <br />
+The output can be cleared with the Clear Output button if necessary.
 
 ### Method 2: Use the console:
 
 navigate to index.html in your filesystem, double-click, and open with the browser of your choice <br />
-
 use the blocks to create code. Our recommended test is: <br />
 
 set up nutritionix API <br />
