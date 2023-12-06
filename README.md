@@ -6,9 +6,10 @@
 
 ## Instructions
 
-To test the code, follow the below instructions: <br />
-
+To test the code, follow the below instructions: <br /
 There are two methods you can use to compile and run the code <br />
+Find Informational Videos in the docs folder or Here: 
+
 
 ### Method 1: Use the server:
 
