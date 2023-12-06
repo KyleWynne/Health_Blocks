@@ -29,16 +29,16 @@ chmod +x Build.sh
 This Shellscript will install the node compiler, all necessary libraries, and run the server on your computer. <br />
 you can now go back to the github.io website at https://kylewynne.github.io/Health_Blocks/ and use the Run JavaScript button! <br />
 **IMPORTANT NOTE:**
-When using the code blocks with the Run JavaScript button, run the code after each new block is added to the vertical stack. <br />
+When using the code blocks with the Run JavaScript button, run the code after each new block is added to the vertical stack.
 The output can be cleared with the Clear Output button if necessary.
 
 ### Method 2: Use the console:
 
-navigate to index.html in your filesystem, double-click, and open with the browser of your choice <br />
+navigate to https://kylewynne.github.io/Health_Blocks/ <br />
 use the blocks to create code. Our recommended test is: <br />
 
 set up nutritionix API <br />
-Search foods -> Text Input: apple <br />
+NLP Nutrients -> Text Input: Burger <br />
 Print Calories -> Calorie Sum (Calorie Intake(300), Calorie Intake(400)) <br />
 
 hit generate javascript <br />
@@ -47,9 +47,45 @@ hit export javascript <br />
 now you have a file called code.js; this code was designed to be run with the node.js Java compiler. <br />
 if you do not have the node.js java compiler, find further information here: https://nodejs.org/en/download <br />
 
-once installed, you'll want to add the node-fetch package. To install node-fetch, open a terminal window and run "npm install node-fetch" <br />
+you can also download the node.js compiler with the following terminal command
 
-then you can run the code in the command line with: node code.js <br />
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+```
+
+before running with the node compiler, the code needs to be modified slightly so that the output will appear on the console. Find and replace the following lines if applicable.
+
+**Find**
+
+```JavaScript
+.then(data => { return data; })
+```
+
+**Replace**
+
+```JavaScript
+.then(data => console.log(data))
+```
+
+**Find**
+
+```JavaScript
+return calories;
+```
+
+**Replace**
+
+```JavaScript
+console.log(calories);
+```
+
+then you can run the code in the command line with <br />
+```bash
+node code.js
+```
+
+**Disclaimer:** 
+These changes must be made to the code because the code has been written to run on the server.
 
 ## Project Description & Motivation:
 
