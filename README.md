@@ -8,7 +8,7 @@
 
 To test the code, follow the below instructions: <br />
 There are two methods you can use to compile and run the code <br />
-Find Informational Videos in the docs folder or Here: 
+Find Informational Videos in the docs folder or Here: https://github.com/KyleWynne/Health_Blocks/tree/main/docs/videos 
 
 
 ### Method 1: Use the server:
