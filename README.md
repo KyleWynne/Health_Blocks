@@ -29,9 +29,12 @@ chmod +x Build.sh
 
 This Shellscript will install the node compiler, all necessary libraries, and run the server on your computer. <br />
 you can now go back to the github.io website at https://kylewynne.github.io/Health_Blocks/ and use the Run JavaScript button! <br />
+
 **IMPORTANT NOTE:**
 When using the code blocks with the Run JavaScript button, run the code after each new block is added to the vertical stack.
 The output can be cleared with the Clear Output button if necessary.
+
+Server Backend Info Can be found at: 
 
 ### Method 2: Use the console:
 
