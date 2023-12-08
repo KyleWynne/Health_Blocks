@@ -34,7 +34,7 @@ you can now go back to the github.io website at https://kylewynne.github.io/Heal
 When using the code blocks with the Run JavaScript button, run the code after each new block is added to the vertical stack.
 The output can be cleared with the Clear Output button if necessary.
 
-Server Backend Info Can be found at: 
+Server Backend Info Can be found at: https://github.com/KyleWynne/Health_Blocks/blob/main/docs/Server.md
 
 ### Method 2: Use the console:
 
