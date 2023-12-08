@@ -11,7 +11,7 @@ There are two methods you can use to compile and run the code <br />
 Find Informational Videos in the docs folder or Here: https://github.com/KyleWynne/Health_Blocks/tree/main/docs/videos 
 
 
-### Method 1: Use the server:
+### Method 1: Use the server: (Recommended)
 
 Step 1: Clone our project using git
 To install the project dependencies, run the following command in your terminal:
