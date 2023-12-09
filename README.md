@@ -102,9 +102,14 @@ The use of a block-based coding system aligns with our motivation for this proje
 ## Future Additions
 We would like to expand the project in 2 different ways moving forward. The first is by adding blocks that use the log function of the API. This function would force users to get their own account with Nutritionix and would require them to find and paste their API credentials which may be difficult. These accounts are free, so there will be no price charged to the users. there is a surplus of log-based API calls that could be implemented, giving this project and extremely large amount of space to expand. Another area of the API that we would like to investigate is the calls that connect with your Apple watch or Fitbit. This would allow users to get the most out of their devices and provide a novel programming challenge. Another way that this project could be upgraded is on the server. Our current server works as a shell executing each call as the user writes their program, giving live feedback in the process. This feedback is then useful for the summing functions so that users can find how all their exercise and dieting are balanced out. We would also like to implement a parsing function that can collect all the outputs at once to return the full output at once as well.
 
-Here are the V2 endpoints referenced earlier: 
+Here are the V2 endpoints referenced earlier: https://trackapi.nutritionix.com/docs/#/
 
-## Contributions
+## Contributions By Group Member
+Kyle Wynne: Developed server-client infrastructure, Conducted research on the Nutritionix API, Aided in the creation of documentation, aided in the creation of code blocks, recorded Videos
+
+Natalie Huante: Aided development of the  Front end infrastructure, Aided on the Research of the Nutritionix API, Worked on the creation of code blocks
+
+Lauren Slozsek: Worked on the development of the front end, Worked on Documentation, Aided the design of the Server client infrastructure, Thoroughly tested and validated each component.
 
 ## Relating to Parsing, Interpretation, & Compilation:
 The project described above has a relation to parsin, interpretation and compilation alike. Below we provide a brief description as to how they are related and why they are important to the overall functionality of our project.
