@@ -1,6 +1,9 @@
-# Health_Blocks
+# Health Blocks
 
 **Group Members:** Natalie Huante, Kyle Wynne, Lauren Szlosek
+
+## Link to Videos
+Find Informational Videos in the docs folder or Here: https://github.com/KyleWynne/Health_Blocks/tree/main/docs/videos 
 
 ## Instructions For Running Our Project
 
@@ -8,7 +11,6 @@
 
 To test the code, follow the below instructions: <br />
 There are two methods you can use to compile and run the code <br />
-Find Informational Videos in the docs folder or Here: https://github.com/KyleWynne/Health_Blocks/tree/main/docs/videos 
 
 
 ### Method 1: Use the server: (Recommended)
@@ -93,9 +95,16 @@ These changes must be made to the code because the code has been written to run 
 
 ## Project Description & Motivation:
 
-The original aim of this project was to provide an accessible and user-friendly program for users to create individualized health and fitness through the integration of the Blockly API. However, upon revisions and discussions with Professor Kurz, we can shifted the end goal of this project. Now, the goal of this project is to provide an accessible and user-friendly program for users to look up nutritional information on their meals. We will use the Blockly API as the foundation for the program and implement a domain specific language that will provide users with a more customized experience. We plan to have users be able to enter information about their meals and then provide them with nutrional details.
+The original aim of this project was to provide an accessible and user-friendly program for users to create individualized health and fitness through the integration of the Blockly API. However, upon revisions and discussions with Professor Kurz, we have shifted the end goal of this project. Now, this project aims to provide an accessible and user-friendly program for users to look up nutritional information on their meals. We will use the Blockly API as the foundation for the program and implement a domain-specific language that will provide users with a more customized experience. We plan to have users be able to enter information about their meals and then provide them with nutritional details.
 
-The use of a block-based coding system aligns with our motivation for this project since it will allow the program to be extremely intuitive and user-friendly. Therefore, this health and nutrition system will not only be accessible but easy to understand and to master to those outside of the computer science world. The block-based format will also allow our team to give our users both flexibility and constraints. Users will be able to move blocks around and snap them together in differing combinations which gives the flexibility in the final outcome. However, we can also implement constraints on these combinations by only allowng certain blocks to fit into other blocks and so on. With this ability, our team will be able to force certain quality control restrictions on usres when creating their personalized plans.
+The use of a block-based coding system aligns with our motivation for this project since it will allow the program to be extremely intuitive and user-friendly. Therefore, this health and nutrition system will not only be accessible but also easy to understand and master for those outside of the computer science world. The block-based format will also allow our team to give our users both flexibility and constraints. Users will be able to move blocks around and snap them together in differing combinations, which gives the flexibility in the final outcome. However, we can also implement constraints on these combinations by only allowing certain blocks to fit into other blocks and so on. With this ability, our team will be able to force certain quality control restrictions on users when creating their personalized scripts.
+
+## Future Additions
+We would like to expand the project in 2 different ways moving forward. The first is by adding blocks that use the log function of the API. This function would force users to get their own account with Nutritionix and would require them to find and paste their API credentials which may be difficult. These accounts are free, so there will be no price charged to the users. there is a surplus of log-based API calls that could be implemented, giving this project and extremely large amount of space to expand. Another area of the API that we would like to investigate is the calls that connect with your Apple watch or Fitbit. This would allow users to get the most out of their devices and provide a novel programming challenge. Another way that this project could be upgraded is on the server. Our current server works as a shell executing each call as the user writes their program, giving live feedback in the process. This feedback is then useful for the summing functions so that users can find how all their exercise and dieting are balanced out. We would also like to implement a parsing function that can collect all the outputs at once to return the full output at once as well.
+
+Here are the V2 endpoints referenced earlier: 
+
+## Contributions
 
 ## Relating to Parsing, Interpretation, & Compilation:
 The project described above has a relation to parsin, interpretation and compilation alike. Below we provide a brief description as to how they are related and why they are important to the overall functionality of our project.
