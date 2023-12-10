@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Healthy Blocks</title>
+    <!-- Header with title of the project and important files -->
+    <title>Health Blocks</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="https://unpkg.com/node-fetch"></script>
     <script src="https://unpkg.com/whammy/whammy.min.js"></script>
     <script src="code_blocks.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- add a style for h1 to be alligned in the center -->
     <style>
         h1, #instructions {
             text-align: center;
@@ -14,6 +16,8 @@
     </style>
 </head>
 <body>
+    <!-- Header to display blocks and detailed instructions -->
+    <!-- Talso displays a link to the Repo -->
     <h1>Health Blocks</h1>
     <section id="instructions">
         Important Reminders: <br>
@@ -23,6 +27,7 @@
         See More detailed instructions <a href="https://github.com/KyleWynne/Health_Blocks/blob/main/README.md"> here </a>
     </section>
     <div class="row">
+        <!-- Create the toolbox and environment for creating code -->
         <div id="blocklyDiv" class="full-width"></div>
         <xml id="toolbox" style="display: none">
             <block type="setup_nutritionix"></block>
@@ -35,6 +40,7 @@
             <block type="calorie_sum"></block>
         </xml>
     </div>
+    <!-- Setup the buttons -->
     <div class="row button-row">
         <button onclick="generateCode()">Generate JavaScript</button>
         <button onclick="runCode()">Run JavaScript</button>
@@ -45,36 +51,40 @@
         <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
     </div>
     <div class="row">
+        <!-- Divide the bottom between generated code and output  -->
         <div id="codeDiv" class="half-width"></div>
         <div id="outputDiv" class="half-width"></div>
     </div>
     <script>
+        // Create the workspace and load the default blocks
         var workspace = Blockly.inject('blocklyDiv', {
             toolbox: document.getElementById('toolbox'),
             scrollbars: true
         });
-
+        // Load the default blocks
         window.onload = function() {
             DefaultBlocksFile();
         };
-
+        // Generate the code and display it in the codeDiv
         function generateCode() {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
             document.getElementById('codeDiv').innerText = code;
         }
-
+        // Run the code on the server and display the output
         async function runCode() {
             let port = 3000;
             let response;
+            // Try to run the code on the server
             while (true) {
                 try {
+                    // Read Generate the code
                     const code = Blockly.JavaScript.workspaceToCode(workspace);
                     var log = console.log;
                     var output = '';
                     console.log = function (message) {
                         output += message + '\n';
                     };
-
+                    // Send the code to the server
                     response = await fetch(`http://localhost:${port}/run-code`, {
                         method: 'POST',
                         headers: {
@@ -82,20 +92,25 @@
                         },
                         body: JSON.stringify({ code })
                     });
+                    // If the code ran successfully, display the output
                     if (response.ok) {
                         const result = await response.text();
                         const outputDiv = document.getElementById('outputDiv');
                         outputDiv.innerText += result + '\n';
                         break;
+                    // If the code did not run successfully, try the next port
                     } else if (response.status === 404) {
                         port++;
+                    // If the code did not run successfully, display the error
                     } else {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
+                    // If the code did not run successfully, try the next port
                 } catch (e) {
                     if (e instanceof TypeError) {
                     port++;
                     } else {
+                        // If the code did not run successfully, display the error
                     console.error(e);
                     document.getElementById('outputDiv').innerText = 'Error: ' + e;
                     return;
@@ -103,11 +118,11 @@
                 }
             }
         }
-
+        // Clear the output
         function clearOutput() {
             document.getElementById('outputDiv').innerText = '';
         }
-
+        // Save the blocks to a file
         function saveBlocks() {
             var xml = Blockly.Xml.workspaceToDom(workspace);
             var xmlText = Blockly.Xml.domToPrettyText(xml);
@@ -117,21 +132,11 @@
             a.href = URL.createObjectURL(blob);
             a.click();
         }
-
+        // Load the blocks from a file
         function loadBlocks() {
             document.getElementById('loadInput').click();
         }
-
-        function loadBlocksFile(event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var xml = Blockly.utils.xml.textToDom(e.target.result);
-                Blockly.Xml.appendDomToWorkspace(xml, workspace);
-            };
-            reader.readAsText(file);
-        }
-
+        // export the generated code to a .js file
         function exportCode() {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
             var blob = new Blob([code], {type: 'text/javascript'});
@@ -140,17 +145,7 @@
             a.href = URL.createObjectURL(blob);
             a.click();
         }
-
-        // function DefaultBlocksFile() {
-        //     var file = "DefaultBlocks.xml";
-        //     var reader = new FileReader();
-        //     reader.onload = function(e) {
-        //         var xml = Blockly.utils.xml.textToDom(e.target.result);
-        //         Blockly.Xml.appendDomToWorkspace(xml, workspace);
-        //     };
-        //     reader.readAsText(file);
-        // }
-        
+        // Load the blocks upon startup of the page so that users have an example
         function DefaultBlocksFile() {
             var xmlText = '<xml xmlns="https://developers.google.com/blockly/xml">\n'+
                             '<block type="setup_nutritionix" id="=#UcV:Gc-)p|,ky3S5s=" x="42" y="18">\n'+
@@ -168,7 +163,7 @@
             var xml = Blockly.utils.xml.textToDom(xmlText);
             Blockly.Xml.domToWorkspace(xml, workspace);
         }
-
+        // Load the blocks on startup
         window.onload = DefaultBlocksFile;
 
     </script>

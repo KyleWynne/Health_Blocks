@@ -1,16 +1,17 @@
-
+// Description: This file contains the code for the custom blocks that are used in the Blockly editor
+// Create the setup block for the Nutritionix API
 Blockly.Blocks['setup_nutritionix'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("set up Nutritionix API with credentials");
-    //this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(30);
     this.setTooltip("");
     this.setHelpUrl("");
   }
 };
-
+// Create the code for the setup block
+// This code gives a header comment and API credentials
 Blockly.JavaScript['setup_nutritionix'] = function(block) {
   var code =  '// This code was written using the node.js compiler\n' +
               '// To run this code, you must install node.js\n' +
@@ -22,13 +23,13 @@ Blockly.JavaScript['setup_nutritionix'] = function(block) {
               '\n';
   return code;
 };
-
+// Create the block for the search foods block
+// This block takes a food name as input and returns the food ID
 Blockly.Blocks['search_foods'] = {
   init: function() {
     this.appendValueInput("query")
         .setCheck(null)
-        .appendField("search for foods matching");
-    //this.setOutput(true, null);
+        .appendField("search for foods matching"); // Query the user for the food name
     this.setColour(180);
     this.setTooltip("");
     this.setHelpUrl("");
@@ -36,62 +37,60 @@ Blockly.Blocks['search_foods'] = {
     this.setNextStatement(true, null);
   }
 };
-
+// Create the code for the search foods block
 Blockly.JavaScript['search_foods'] = function(block) {
   var value_query = Blockly.JavaScript.valueToCode(block, 'query', Blockly.JavaScript.ORDER_NONE);
-  //Blockly.JavaScript['search_foods'] = function(block) {
-    var value_query = Blockly.JavaScript.valueToCode(block, 'query', Blockly.JavaScript.ORDER_NONE);
-    var generatedCode = 'const foodName = '+ value_query +'; // Replace with the food you want to search for \n' +
-    'const apiUrl = `https://trackapi.nutritionix.com/v2/search/instant?query=${foodName}`; \n' +
-    'var headers = { \n' +
-    ' "x-app-id": app_id,\n' +
-    ' "x-app-key": app_key,\n' +
-    ' "x-remote-user-id": 0\n' +
-    '}; \n' +
-    'fetch(apiUrl, { headers })\n' +
-    ' .then((response) => {\n' +
-    '   if (response.status === 200) {\n' +
-    '     return response.json();\n' +
-    '   } else {\n' +
-    '     throw new Error(`Error: HTTP response code ${response.status}`);\n' +
-    '   }\n' +
-    ' })\n' +
-    ' .then(data => { return data; })\n' +
-    ' .catch((error) => {\n' +
-    '   console.error("Error:", error);\n' +
-    ' });\n';
-  
-    return generatedCode;
-  //};
-};
+  var value_query = Blockly.JavaScript.valueToCode(block, 'query', Blockly.JavaScript.ORDER_NONE);
+  var generatedCode = 'const foodName = '+ value_query +'; // Replace with the food you want to search for \n' +
+  'const apiUrl = `https://trackapi.nutritionix.com/v2/search/instant?query=${foodName}`; \n' +
+  'var headers = { \n' +
+  ' "x-app-id": app_id,\n' +
+  ' "x-app-key": app_key,\n' +
+  ' "x-remote-user-id": 0\n' +
+  '}; \n' +
+  'fetch(apiUrl, { headers })\n' +
+  ' .then((response) => {\n' +
+  '   if (response.status === 200) {\n' +
+  '     return response.json();\n' +
+  '   } else {\n' +
+  '     throw new Error(`Error: HTTP response code ${response.status}`);\n' +
+  '   }\n' +
+  ' })\n' +
+  ' .then(data => { return data; })\n' + // Return the data instead of logging it
+  ' .catch((error) => {\n' +
+  '   console.error("Error:", error);\n' +
+  ' });\n';
 
+  return generatedCode;
+};
+// Create the block for text input
 Blockly.Blocks['text_input'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("text input:")
-        .appendField(new Blockly.FieldTextInput(''), 'TEXT');
-    this.setOutput(true, 'String');
+        .appendField(new Blockly.FieldTextInput(''), 'TEXT'); // Query the user for the text
+    this.setOutput(true, 'String'); // Set the output type to String
     this.setColour(200);
     this.setTooltip("");
     this.setHelpUrl("");
   }
 };
-
+// Create the code for text input
 Blockly.JavaScript['text_input'] = function(block) {
-  var text = block.getFieldValue('TEXT');
-  var code = '"' + text + '"';
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  var text = block.getFieldValue('TEXT'); // Get the text from the block
+  var code = '"' + text + '"'; // Add quotes around the text
+  return [code, Blockly.JavaScript.ORDER_ATOMIC]; // Return the code
 };
-
+//Create Caloris Sum block
 Blockly.Blocks['calorie_sum'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("calorie sum");
+        .appendField("calorie sum"); // Set the block name
     this.appendValueInput("NUM1")
-        .setCheck("Number");
+        .setCheck("Number"); // Set the input type to Number
     this.appendValueInput("NUM2")
         .setCheck("Number")
-        .appendField("+");
+        .appendField("+"); // Set the input type to Number
     this.setInputsInline(true);
     this.setOutput(true, "Number");
     this.setColour(310);
@@ -99,36 +98,33 @@ Blockly.Blocks['calorie_sum'] = {
     this.setHelpUrl("");
   }
 };
-
+//Create Caloris Sum code
+//This can run recursively
 Blockly.JavaScript['calorie_sum'] = function(block) {
   var value_num1 = Blockly.JavaScript.valueToCode(block, 'NUM1', Blockly.JavaScript.ORDER_ATOMIC);
   var value_num2 = Blockly.JavaScript.valueToCode(block, 'NUM2', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = `${value_num1} + ${value_num2}`;
+  var code = `${value_num1} + ${value_num2}`; // Add the two numbers
   return [code, Blockly.JavaScript.ORDER_ADDITION];
 };
-
+//create get integer block
 Blockly.Blocks['get_integer'] = {
-  /**
-   * Block for numeric value.
-   * @this {Blockly.Block}
-   */
   init: function() {
     this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
     this.setColour(Blockly.Msg.MATH_HUE);
     this.appendDummyInput()
-        .appendField("num input: ")
-        .appendField(new Blockly.FieldNumber('3'), 'NUM');
-    this.setOutput(true, 'Number');
+        .appendField("num input: ") 
+        .appendField(new Blockly.FieldNumber('3'), 'NUM'); // Query the user for the number
+    this.setOutput(true, 'Number'); // Set the output type to Number
     this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
   }
 };
-
+//create get integer code
 Blockly.JavaScript['get_integer'] = function(block) {
   // Numeric value.
   var code = parseFloat(block.getFieldValue('NUM'));
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 }
-
+// create print block
 Blockly.Blocks['print_calories'] = {
   init: function() {
     this.appendValueInput("CALORIES")
@@ -142,29 +138,22 @@ Blockly.Blocks['print_calories'] = {
     this.setHelpUrl("");
   }
 };
-
+// create print code
 Blockly.JavaScript['print_calories'] = function(block) {
   var value_calories = Blockly.JavaScript.valueToCode(block, 'CALORIES', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'function printCalories() {\n' +
              '  var calories = "total calories: "+ '+value_calories+';\n'+
-             '  return calories;\n' +
+             '  return calories;\n' + // Return the data instead of logging it
              '}\n' +
              'printCalories();\n';
   return code;
 };
-
-// Blockly.JavaScript['print_calories'] = function(block) {
-//   var value_calories = Blockly.JavaScript.valueToCode(block, 'CALORIES', Blockly.JavaScript.ORDER_ATOMIC);
-//   var code = 'var calories = "total calories: "+ "'+value_calories+'";\n'+
-//   'return calories;\n';
-//   return code;
-// };
-
+// creat nlp exercise block
 Blockly.Blocks['nlp_exercise'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("nlp exercise")
-    this.appendValueInput("QUERY")
+    this.appendValueInput("QUERY") // set all the query values
         .setCheck("String")
         .appendField("Query");
     this.appendDummyInput()
@@ -188,14 +177,15 @@ Blockly.Blocks['nlp_exercise'] = {
     this.setHelpUrl("");
   }
 };
-
+// create nlp exercise code
+// This code uses the Nutritionix API to search for exercises and return data
+// This code can take in natural language input
 Blockly.JavaScript['nlp_exercise'] = function(block) {
   var Query = Blockly.JavaScript.valueToCode(block, 'QUERY', Blockly.JavaScript.ORDER_ATOMIC);
   var Gender = block.getFieldValue('GENDER');
   var Height = Blockly.JavaScript.valueToCode(block, 'HEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
   var Weight = Blockly.JavaScript.valueToCode(block, 'WEIGHT', Blockly.JavaScript.ORDER_ATOMIC);
   var Age = Blockly.JavaScript.valueToCode(block, 'AGE', Blockly.JavaScript.ORDER_ATOMIC);
-  //Blockly.JavaScript['nlp_exercise'] = function(block) {
   var code = '\n' +
   'var headers = { \n' +
   '  "x-app-id": app_id,\n'+
@@ -229,9 +219,8 @@ Blockly.JavaScript['nlp_exercise'] = function(block) {
   '.then(data => { return data; })\n'+
   '.catch(error => console.error("Error:", error));\n';
   return code;
-  //};
 }
-
+// create nlp nutrition block
 Blockly.Blocks['nlp_nutrition'] = {
   init: function() {
     this.appendDummyInput()
@@ -248,10 +237,11 @@ Blockly.Blocks['nlp_nutrition'] = {
     this.setHelpUrl("");
   }
 };
-
+// create nlp nutrition code
+// This code uses the Nutritionix API to search for foods and return data
+// This code can take in natural language input
 Blockly.JavaScript['nlp_nutrition'] = function(block) {
   var Query = Blockly.JavaScript.valueToCode(block, 'QUERY', Blockly.JavaScript.ORDER_ATOMIC);
-  //Blockly.JavaScript['nlp_nutrition'] = function(block) {
   var code = '\n' +
   'var headers = { \n' +
   '  "x-app-id": app_id,\n'+
@@ -277,32 +267,13 @@ Blockly.JavaScript['nlp_nutrition'] = function(block) {
   '//.then(data => console.log(data)) //comment this line in when running on the console\n'+
   '.catch(error => console.error("Error:", error));\n';
   return code;
-  //}
 }
-
-Blockly.Blocks['Search_ID'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Search ID ")
-        .appendField(new Blockly.FieldTextInput('nix_item_id'), 'TEXT');
-    this.setOutput(true, 'String');
-    this.setColour(200);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
-Blockly.JavaScript['Search_ID'] = function(block) {
-  var text = block.getFieldValue('TEXT');
-  var code = '"' + text + '"';
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
+// export code function
 function exportCode() {
   var code = Blockly.JavaScript.workspaceToCode(workspace);
   download('code.js', code);
 }
-
+// download function
 function download(filename, text) {
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
