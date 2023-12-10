@@ -54,6 +54,10 @@
             scrollbars: true
         });
 
+        window.onload = function() {
+            DefaultBlocksFile();
+        };
+
         function generateCode() {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
             document.getElementById('codeDiv').innerText = code;
@@ -136,6 +140,36 @@
             a.href = URL.createObjectURL(blob);
             a.click();
         }
+
+        // function DefaultBlocksFile() {
+        //     var file = "DefaultBlocks.xml";
+        //     var reader = new FileReader();
+        //     reader.onload = function(e) {
+        //         var xml = Blockly.utils.xml.textToDom(e.target.result);
+        //         Blockly.Xml.appendDomToWorkspace(xml, workspace);
+        //     };
+        //     reader.readAsText(file);
+        // }
+        
+        function DefaultBlocksFile() {
+            var xmlText = '<xml xmlns="https://developers.google.com/blockly/xml">\n'+
+                            '<block type="setup_nutritionix" id="=#UcV:Gc-)p|,ky3S5s=" x="42" y="18">\n'+
+                                '<next>\n'+
+                                '<block type="nlp_nutrition" id="5=R9t2%-]2C,G2^^VtR3">\n'+
+                                    '<value name="QUERY">\n'+
+                                    '<block type="text_input" id="co=az1-5|WgkQ~D^HzZ?">\n'+
+                                        '<field name="TEXT">I ate 3 apples</field>\n'+
+                                    '</block>\n'+
+                                    '</value>\n'+
+                               ' </block>\n'+
+                                '</next>\n'+
+                            '</block>\n'+
+                            '</xml>';  
+            var xml = Blockly.utils.xml.textToDom(xmlText);
+            Blockly.Xml.domToWorkspace(xml, workspace);
+        }
+
+        window.onload = DefaultBlocksFile;
 
     </script>
 </body>
